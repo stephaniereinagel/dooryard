@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Homestead Ops" />
+    <meta name="theme-color" content="#2f6b3a" />
+    <title>Homestead Ops</title>
+    <link rel="stylesheet" href="./styles.css?v=20260416-8" />
+  </head>
+  <body>
+    <!-- ======================= AUTH GATE ======================= -->
+    <section id="auth-gate" class="auth-gate" aria-live="polite">
+      <article class="auth-card">
+        <h1>Homestead Ops</h1>
+        <p class="subtitle">Sign in to open your workspace.</p>
+        <label>Email <input id="auth-email" type="email" placeholder="you@example.com" autocomplete="email" /></label>
+        <label>Password <input id="auth-password" type="password" placeholder="••••••••" autocomplete="current-password" /></label>
+        <div class="auth-actions">
+          <button id="auth-signin-btn">Sign In</button>
+          <button id="auth-signup-btn" class="secondary">Create Account</button>
+          <button id="auth-magic-link-btn" class="secondary">Email Magic Link</button>
+        </div>
+        <p id="auth-status" class="small">Checking session…</p>
+      </article>
+    </section>
+
+    <!-- ======================= APP SHELL ======================= -->
+    <div id="app" hidden>
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1>Homestead Ops</h1>
+          <p id="workspace-label" class="subtitle">—</p>
+        </div>
+        <div class="topbar-right">
+          <span id="user-chip" class="user-chip"></span>
+          <button id="signout-btn" class="ghost">Sign out</button>
+        </div>
+      </header>
+
+      <div id="workspace-error-banner" class="banner error" hidden>
+        <div>
+          <strong>Workspace not loaded.</strong>
+          <p id="workspace-error-detail" class="subtitle"></p>
+        </div>
+        <button id="retry-workspace-btn" class="primary">Retry</button>
+      </div>
+
+      <main id="view-root">
+        <!-- ============== TODAY VIEW ============== -->
+        <section id="view-today" class="view">
+          <div class="day-banner">
+            <h2 id="today-title">Today</h2>
+            <p id="today-subtitle" class="subtitle">—</p>
+          </div>
+
+          <article class="panel">
+            <div class="row">
+              <h3>Priority whiteboard</h3>
+              <button class="ghost" data-nav="whiteboard">Manage →</button>
+            </div>
+            <ul id="today-whiteboard" class="whiteboard-list compact">
+              <li class="empty">No priorities set.</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <h3>Arrival (8:00–8:15)</h3>
+            <ul class="checklist" data-section="arrival">
+              <li><label><input type="checkbox" /> Park in designated spot</label></li>
+              <li><label><input type="checkbox" /> Read priority whiteboard above</label></li>
+              <li><label><input type="checkbox" /> Read previous shift log</label></li>
+              <li><label><input type="checkbox" /> Quick property loop (look for anything unusual)</label></li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <h3>Daily core (8:15–9:30)</h3>
+            <ul class="checklist" data-section="core">
+              <li><label><input type="checkbox" /> Chickens: visual, feed, water, eggs</label></li>
+              <li><label><input type="checkbox" /> Ducks: visual, feed, <strong>water dumped &amp; refilled</strong>, eggs</label></li>
+              <li><label><input type="checkbox" /> Eggs sorted + logged (see count below)</label></li>
+              <li><label><input type="checkbox" /> Garden walk-through (observation only)</label></li>
+            </ul>
+            <div class="two-col">
+              <label>Chicken eggs <input id="egg-chicken" type="number" min="0" step="1" /></label>
+              <label>Duck eggs <input id="egg-duck" type="number" min="0" step="1" /></label>
+            </div>
+          </article>
+
+          <article class="panel" id="day-specific-panel">
+            <h3 id="day-specific-title">Day-specific work</h3>
+            <div id="day-specific-body">
+              <p class="small">—</p>
+            </div>
+            <div class="link-row">
+              <a id="link-garden-coach" href="#" target="_blank" rel="noopener">🌱 Open MyGardenCoach</a>
+              <a id="link-facebook" href="#" target="_blank" rel="noopener" hidden>📣 Facebook page</a>
+            </div>
+          </article>
+
+          <article class="panel">
+            <h3>Backlog pull (if time remains)</h3>
+            <p class="small">Top of the list is what to grab next.</p>
+            <ul id="today-backlog" class="backlog-list compact">
+              <li class="empty">Backlog is empty.</li>
+            </ul>
+            <button class="ghost" data-nav="backlog">Open full backlog →</button>
+          </article>
+
+          <article class="panel">
+            <h3>Wrap-up log (11:50–12:00)</h3>
+            <p class="small">Filled at end of shift. Stephanie reads this to know what happened.</p>
+            <label>Hours worked
+              <span class="two-col">
+                <input id="log-hours-start" type="time" />
+                <input id="log-hours-end" type="time" />
+              </span>
+            </label>
+            <label>Weather <input id="log-weather" type="text" placeholder="e.g. sunny 72F, breezy" /></label>
+            <label>What I focused on after daily chores <textarea id="log-focus" rows="3"></textarea></label>
+            <label>What got finished <textarea id="log-finished" rows="2"></textarea></label>
+            <label>Partial / needs follow-up <textarea id="log-partial" rows="2"></textarea></label>
+            <label>Flags (anything Stephanie should know) <textarea id="log-flags" rows="2"></textarea></label>
+            <label>Supplies running low <textarea id="log-supplies" rows="2"></textarea></label>
+            <label>Animal notes <textarea id="log-animals" rows="2"></textarea></label>
+            <label>Garden notes <textarea id="log-garden" rows="2"></textarea></label>
+
+            <div class="friday-only" hidden>
+              <label class="checkbox-row"><input id="log-stand-open" type="checkbox" /> Stand open, signs out</label>
+              <label class="checkbox-row"><input id="log-fb-posted" type="checkbox" /> Facebook post live</label>
+              <label>Rough stand inventory at 12:00 <textarea id="log-stand-inventory" rows="2"></textarea></label>
+            </div>
+
+            <label>Questions for Friday wrap-up <textarea id="log-questions" rows="2"></textarea></label>
+            <label>What I'd like to do next shift <textarea id="log-next" rows="2"></textarea></label>
+
+            <div class="row actions">
+              <button id="save-log-btn">Save shift log</button>
+              <span id="save-log-status" class="small"></span>
+            </div>
+          </article>
+        </section>
+
+        <!-- ============== WHITEBOARD VIEW ============== -->
+        <section id="view-whiteboard" class="view" hidden>
+          <div class="panel">
+            <div class="row">
+              <h2>Priority whiteboard</h2>
+              <button id="add-whiteboard-btn">+ Add</button>
+            </div>
+            <p class="small">Visible to everyone in the workspace. Pin the must-dos. Cross off when done.</p>
+            <ul id="whiteboard-list" class="whiteboard-list"></ul>
+          </div>
+        </section>
+
+        <!-- ============== BACKLOG VIEW ============== -->
+        <section id="view-backlog" class="view" hidden>
+          <div class="panel">
+            <div class="row">
+              <h2>Backlog</h2>
+              <button id="add-backlog-btn">+ Add</button>
+            </div>
+            <div class="filter-row">
+              <select id="backlog-category-filter">
+                <option value="all">All categories</option>
+                <option value="maintenance">Maintenance</option>
+                <option value="project">Projects</option>
+              </select>
+              <select id="backlog-zone-filter">
+                <option value="all">All zones</option>
+                <option value="flock">Flock/coop</option>
+                <option value="garden">Garden</option>
+                <option value="stand">Stand</option>
+                <option value="property">Property</option>
+                <option value="kitchen">Kitchen</option>
+                <option value="other">Other</option>
+              </select>
+              <select id="backlog-status-filter">
+                <option value="open_in_progress">Open + in progress</option>
+                <option value="open">Open only</option>
+                <option value="done">Done</option>
+                <option value="all">All</option>
+              </select>
+            </div>
+            <ul id="backlog-list" class="backlog-list"></ul>
+          </div>
+
+          <div class="panel">
+            <details>
+              <summary>Seasonal focus (by month) — reference only</summary>
+              <div id="seasonal-content" class="markdown-body"><p class="small">Loading…</p></div>
+            </details>
+          </div>
+        </section>
+
+        <!-- ============== LOGS VIEW ============== -->
+        <section id="view-logs" class="view" hidden>
+          <div class="panel">
+            <div class="row">
+              <h2>Shift logs</h2>
+              <div>
+                <button id="export-logs-btn" class="secondary">Export CSV</button>
+              </div>
+            </div>
+            <div class="filter-row">
+              <input id="log-filter-from" type="date" />
+              <input id="log-filter-to" type="date" />
+              <button id="log-filter-apply" class="secondary">Apply</button>
+              <button id="log-filter-clear" class="ghost">Clear</button>
+            </div>
+            <ul id="log-list" class="log-list"></ul>
+          </div>
+        </section>
+
+        <!-- ============== REFERENCE VIEW ============== -->
+        <section id="view-reference" class="view" hidden>
+          <div class="panel">
+            <h2>Reference</h2>
+            <div class="reference-tabs" role="tablist">
+              <button class="ref-tab active" data-ref="shift-playbook">Playbook</button>
+              <button class="ref-tab" data-ref="task-standards">Standards</button>
+              <button class="ref-tab" data-ref="safety-and-boundaries">Safety</button>
+            </div>
+            <article id="reference-content" class="markdown-body">
+              <p class="small">Loading…</p>
+            </article>
+          </div>
+
+          <div class="panel">
+            <details id="settings-panel">
+              <summary>Settings &amp; workspace</summary>
+              <div class="settings-body">
+                <label>Workspace name <input id="workspace-name-input" type="text" /></label>
+                <button id="save-workspace-btn" class="secondary">Save name</button>
+                <hr />
+                <h4>Invite a member</h4>
+                <p class="small">The person you're inviting must already have created an account in this app. Enter their Supabase user ID (get it from <em>Authentication &gt; Users</em> in Supabase, or they can get it from the banner at the top of this settings panel after signing in).</p>
+                <p class="small">Your Supabase user ID: <code id="my-user-id">—</code></p>
+                <label>User ID to invite <input id="invite-user-id" type="text" placeholder="uuid" /></label>
+                <label>Display name <input id="invite-display-name" type="text" placeholder="e.g. Daniel" /></label>
+                <label>Role
+                  <select id="invite-role">
+                    <option value="member">Member (read/write)</option>
+                    <option value="admin">Admin</option>
+                  </select>
+                </label>
+                <button id="invite-btn" class="secondary">Add member</button>
+                <p id="invite-status" class="small"></p>
+
+                <hr />
+                <h4>Current members</h4>
+                <ul id="member-list" class="member-list"></ul>
+              </div>
+            </details>
+          </div>
+        </section>
+      </main>
+
+      <!-- ======================= BOTTOM NAV ======================= -->
+      <nav id="tabbar" class="tabbar">
+        <button class="tab active" data-nav="today">
+          <span class="tab-icon">🏠</span>
+          <span class="tab-label">Today</span>
+        </button>
+        <button class="tab" data-nav="whiteboard">
+          <span class="tab-icon">📋</span>
+          <span class="tab-label">Board</span>
+        </button>
+        <button class="tab" data-nav="backlog">
+          <span class="tab-icon">🛠️</span>
+          <span class="tab-label">Backlog</span>
+        </button>
+        <button class="tab" data-nav="logs">
+          <span class="tab-icon">📓</span>
+          <span class="tab-label">Logs</span>
+        </button>
+        <button class="tab" data-nav="reference">
+          <span class="tab-icon">📖</span>
+          <span class="tab-label">Reference</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- ======================= DIALOGS ======================= -->
+    <dialog id="whiteboard-dialog">
+      <form method="dialog" id="whiteboard-form">
+        <h3 id="whiteboard-dialog-title">Add priority</h3>
+        <input id="whiteboard-id" type="hidden" />
+        <label>Text <textarea id="whiteboard-text" rows="3" required maxlength="300"></textarea></label>
+        <label class="checkbox-row"><input id="whiteboard-pinned" type="checkbox" /> Pin to top</label>
+        <menu>
+          <button type="button" id="whiteboard-cancel" class="secondary">Cancel</button>
+          <button type="submit">Save</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="backlog-dialog">
+      <form method="dialog" id="backlog-form">
+        <h3 id="backlog-dialog-title">Add backlog item</h3>
+        <input id="backlog-id" type="hidden" />
+        <label>Title <input id="backlog-title" type="text" required maxlength="200" /></label>
+        <div class="two-col">
+          <label>Category
+            <select id="backlog-category" required>
+              <option value="maintenance">Maintenance</option>
+              <option value="project">Project</option>
+            </select>
+          </label>
+          <label>Zone
+            <select id="backlog-zone">
+              <option value="">—</option>
+              <option value="flock">Flock/coop</option>
+              <option value="garden">Garden</option>
+              <option value="stand">Stand</option>
+              <option value="property">Property</option>
+              <option value="kitchen">Kitchen</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+        </div>
+        <label>Notes <textarea id="backlog-notes" rows="3" maxlength="1000"></textarea></label>
+        <label>Status
+          <select id="backlog-status">
+            <option value="open">Open</option>
+            <option value="in_progress">In progress</option>
+            <option value="done">Done</option>
+          </select>
+        </label>
+        <menu>
+          <button type="button" id="backlog-cancel" class="secondary">Cancel</button>
+          <button type="submit">Save</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="log-view-dialog">
+      <article id="log-view-content">
+      </article>
+      <menu>
+        <button type="button" id="log-view-close" class="secondary">Close</button>
+      </menu>
+    </dialog>
+
+    <script src="./app-config.js?v=20260416-8"></script>
+    <script type="module" src="./app.js?v=20260416-8"></script>
+  </body>
+</html>

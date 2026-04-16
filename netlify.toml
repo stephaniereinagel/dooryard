@@ -1,0 +1,10 @@
+# Netlify config for Dooryard (Homestead Ops)
+# No build step — just publish the repo root as-is.
+
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
