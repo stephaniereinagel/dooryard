@@ -15,7 +15,7 @@ There are 5 kids, age 5 and under. They are part of the landscape and sometimes 
 
 **Never:**
 - Operate power tools (mowers, weed eaters, etc.) when kids are in the same zone.
-- Give a child a tool, even if they ask.
+- Give a child a power tool, even if they ask.
 - Take a photo or video of a child and share anywhere online.
 - Be alone in a closed room with a single child — keep doors open or work in open/visible spaces. This protects you as much as anyone.
 - Post about the family or the property on social media without asking Stephanie first.
@@ -39,16 +39,14 @@ There are 5 kids, age 5 and under. They are part of the landscape and sometimes 
 
 - Any power tool (weed eater, mower, drill, chainsaw, pressure washer)
 - Ladders over 6 ft
-- Truck or tractor (if we have one)
 - Anything in a locked shed or cabinet
 
 ## Things not to touch without explicit direction
 
 - Medications / chemicals (animal meds, pesticides, bleach, household cleaners mixed in weird containers)
 - Kitchen stove/oven when Stephanie is actively baking for the stand
-- Firearms / ammunition if stored on property **[CONFIRM: yes/no, location]**
-- Financial stuff — cash box, receipts, our devices (other than the stand tablet during your shift)
-- The "keep out" area: **[CONFIRM: e.g. private studio, master bedroom wing, office]**
+- Firearms / ammunition stored on property
+- Financial stuff — cash box, receipts, our devices
 
 ---
 
@@ -66,10 +64,10 @@ Reference: `.cursor/rules/homestead-safety.mdc` (project safety guardrails).
 
 | What you see | What to do |
 |---|---|
-| Bird injured but alive and alert | Isolate in a cat-carrier or separate pen, provide water, text Stephanie |
-| Bird down, bleeding heavily, or gasping | Text Stephanie immediately. If no reply in 10 min, call **[CONFIRM: vet / poultry mentor]** |
-| Dead bird | Move to **[CONFIRM: disposal method/location]**, note in log, flag for Stephanie |
-| Escaped bird(s) | Don't chase — herd calmly toward containment. If caught, return. If lost, note description + last-seen direction |
+| Bird injured but alive and alert | Isolate in a cat-carrier or separate pen, provide water, notify Stephanie, include in shift log|
+| Bird down, bleeding heavily, or gasping | Notify Stephanie immediately. If no reply in 10 min, call **[CONFIRM: vet / poultry mentor]** |
+| Dead bird | Bag in a trash bag and tie off - put in garbage bin, note in log, flag for Stephanie |
+| Escaped bird(s)/near the road | Don't chase — herd calmly toward safety. If caught, return. If lost, note description + last-seen direction |
 | Predator present / attacking | Make noise, scare off (no approach). Secure remaining birds indoors. Text Stephanie. Do not engage wildlife physically |
 | Strange bird on property (not ours) | Don't add to our flock — could bring disease. Photo it, text Stephanie |
 
@@ -80,20 +78,20 @@ Reference: `.cursor/rules/homestead-safety.mdc`.
 - Wash hands between: handling animals → handling eggs → handling baked goods / produce. Every time.
 - Clean prep surfaces before AND after stand-bound items.
 - Allergen awareness: our baked goods contain **wheat, eggs, dairy** (and possibly soy, nuts). If someone asks, say so honestly.
-- Temperature: eggs in the cooler at stand (ambient-warm eggs are fine if rotated — **[CONFIRM Stephanie's rule]**). Baked goods out of direct sun.
+- Temperature: eggs in the cooler at stand (except for "last week's lay"). Baked goods out of direct sun.
 - Never sell an egg you wouldn't eat yourself.
 
 ### Regulated items (flag early)
 
-If a customer asks for something we don't currently sell — raw milk, meat, canned goods, dairy products — **don't promise it.** Say "let me check with Stephanie." Arkansas cottage food rules cover some but not all of these. See `Agent: Compliance` discussions.
+If a customer asks for something we don't currently sell — refer to other local sources, and make note of the request to track demand. 
 
 ---
 
 ## Property boundaries
 
 - **Creek (south edge):** Low-impact only. Photo documentation and clearing deadfall are fine. **No digging, no bank modification, no tree-felling** without explicit plan — erosion risk and possibly regulated.
-- **Wooded area (north/west):** Okay to walk. Don't start clearing projects without direction.
-- **Neighbor property lines:** Don't cross unless you're retrieving a bird or kid. Note any fence gaps for repair.
+- **Wooded area (north):** Okay to walk. Don't start clearing projects without direction.
+- **Neighbor property lines (west):** Don't cross unless you're retrieving a bird or kid. 
 - **Road frontage (east):** The stand area only. Stay clear of the road shoulder; traffic can be fast even on a shortcut road.
 
 ---
@@ -105,7 +103,7 @@ If a customer asks for something we don't currently sell — raw milk, meat, can
 | Heavy rain forecast | Check drainage at coop + duck house before leaving; move stand supplies under cover |
 | High heat (95°F+) | Extra water rounds for birds; shade check; don't push yourself either — drink water, take breaks |
 | Freeze warning | Waterers at risk — check evening plan before leaving; protect garden beds if instructed |
-| Tornado watch/warning | Stop work, get indoors with family. Cellar: **[CONFIRM location]** |
+| Tornado warning | Stop work, get indoors with family. Cellar:basement |
 | Lightning | Off the field immediately, no metal tools, indoors |
 
 ---
@@ -129,7 +127,7 @@ If a customer asks for something we don't currently sell — raw milk, meat, can
 
 **Friday 11:45 wrap-up (in person, 10–15 min):**
 - Review the week's logs together
-- She answers batched questions
+- Stephanie answers batched questions
 - Adjusts priorities / whiteboard for next week
 - Short check-in: how are you doing, any feedback either direction
 
@@ -141,9 +139,10 @@ You should also know:
 
 - If something we ask feels unsafe or unethical, you can say no. Tell us why and we'll talk it out.
 - You get breaks. 4-hour shift: you can take 5–10 min when needed.
-- Stephanie's feedback is about the work, not about you as a person. If anything ever crosses into personal, that's not okay — tell her or tell Erik.
+- Stephanie's feedback is about the work, not about you as a person. If anything ever crosses into personal, that's not okay — tell her or tell Silas.
 - If you're sick, call/text before your shift and stay home. We'd rather reschedule than get the kids sick.
 - You'll be paid for scheduled shifts even if weather/circumstances reduce what you can actually do, unless we agree in advance to reschedule.
+- If you can't do physical labor due to illness or weather, there may be work you can do online/from home.
 
 ---
 
@@ -153,12 +152,10 @@ Fill these in before Day 1:
 
 | | Name | Phone |
 |---|---|---|
-| Stephanie | | [CONFIRM] |
-| Erik | | [CONFIRM] |
-| Vet | | [CONFIRM] |
-| Poultry mentor / neighbor | | [CONFIRM] |
+| Stephanie | | [620-353-9735] |
+| Silas | | [510-856-6071] |
 | 911 | Emergency | 911 |
 | Poison control | | 1-800-222-1222 |
-| Storm shelter location | | [CONFIRM] |
+| Storm shelter location | | [House-basement] |
 | Water main shutoff | | [CONFIRM location] |
-| Electrical main | | [CONFIRM location] |
+| Electrical Panel | | [basement - between two freezers] |
