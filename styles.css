@@ -19,14 +19,22 @@
 }
 
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+html, body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background: var(--bg);
   color: var(--ink);
   line-height: 1.45;
   -webkit-font-smoothing: antialiased;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
+img, video { max-width: 100%; height: auto; }
 
 h1, h2, h3, h4 { margin: 0 0 0.4em; color: var(--ink); }
 h1 { font-size: 1.35rem; }
@@ -141,22 +149,28 @@ hr {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1em;
-  padding: 0.8em 1em;
+  gap: 0.6em;
+  padding: 0.7em 0.9em;
   background: var(--bg-panel);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 20;
+  min-width: 0;
 }
-.topbar h1 { font-size: 1.1rem; }
-.topbar-right { display: flex; align-items: center; gap: 0.5em; }
+.topbar h1 { font-size: 1.05rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.topbar-left { min-width: 0; flex: 1 1 auto; }
+.topbar-right { display: flex; align-items: center; gap: 0.4em; flex-shrink: 0; }
 .user-chip {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--ink-soft);
   background: var(--accent-soft);
-  padding: 0.3em 0.6em;
+  padding: 0.25em 0.55em;
   border-radius: 999px;
+  max-width: 40vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .banner {
@@ -177,9 +191,17 @@ hr {
 .banner button { flex-shrink: 0; }
 
 main {
-  padding: 1em;
+  padding: 0.8em;
   max-width: 820px;
   margin: 0 auto;
+}
+@media (max-width: 480px) {
+  main { padding: 0.6em; }
+  .panel { padding: 0.75em; }
+  h1 { font-size: 1.2rem; }
+  h2 { font-size: 1.05rem; }
+  .day-banner { padding: 0.8em 0.9em; }
+  .day-banner ol, .day-banner ul { padding-left: 1.2em; }
 }
 
 .view { display: flex; flex-direction: column; gap: 1em; }
@@ -291,7 +313,7 @@ main {
   opacity: 0.55;
   text-decoration: line-through;
 }
-.whiteboard-item .text { flex: 1; word-wrap: break-word; }
+.whiteboard-item .text { flex: 1; min-width: 0; word-wrap: break-word; overflow-wrap: break-word; }
 .whiteboard-item .actions {
   display: flex;
   gap: 0.3em;
@@ -428,7 +450,11 @@ main {
 .markdown-body {
   font-size: 0.95rem;
   color: var(--ink);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
+.markdown-body img { max-width: 100%; height: auto; }
+.markdown-body a { word-break: break-word; }
 .markdown-body h1 { font-size: 1.2rem; }
 .markdown-body h2 { font-size: 1.1rem; margin-top: 1em; }
 .markdown-body h3 { font-size: 1rem; margin-top: 0.8em; }
@@ -458,6 +484,8 @@ main {
   width: 100%;
   margin: 0.5em 0;
   font-size: 0.9em;
+  display: block;
+  overflow-x: auto;
 }
 .markdown-body th, .markdown-body td {
   border: 1px solid var(--border);

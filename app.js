@@ -23,6 +23,7 @@ const state = {
   user: null,
   workspace: null,    // { id, owner_user_id, name }
   membership: null,   // { role, display_name }
+  availableWorkspaces: [], // [{ id, name, owner_user_id, role, display_name }]
   whiteboard: [],
   backlog: [],
   logs: [],           // most-recent first
@@ -31,6 +32,8 @@ const state = {
   referenceDoc: "shift-playbook",
   referenceCache: {}
 };
+
+const ACTIVE_WORKSPACE_KEY = "dooryard.activeWorkspaceId";
 
 // ====================================================
 // UI REFS
@@ -125,6 +128,8 @@ const ui = {
   inviteBtn: $("invite-btn"),
   inviteStatus: $("invite-status"),
   memberList: $("member-list"),
+  workspaceSwitcher: $("workspace-switcher"),
+  workspaceSwitcherWrap: $("workspace-switcher-wrap"),
   tabbar: $("tabbar")
 };
 
@@ -303,6 +308,7 @@ async function onSignedIn() {
     renderBacklog();
     renderLogs();
     renderMembers();
+    renderWorkspaceSwitcher();
     renderReference(state.referenceDoc);
     loadSeasonalInBacklog();
   } catch (err) {
@@ -340,24 +346,50 @@ function hideWorkspaceError() {
 async function ensureWorkspace() {
   console.log("[ensureWorkspace] start for user", state.user?.id);
 
-  // Step 1: try to find an existing membership (fast path for returning users
+  // Step 1: try to find existing memberships (fast path for returning users
   // and for non-owner members like Silas / Daniel).
   const mResp = await supabase
     .from("workspace_members")
-    .select("workspace_id, role, display_name, workspaces:workspace_id(id, name, owner_user_id)")
+    .select("workspace_id, role, display_name, created_at, workspaces:workspace_id(id, name, owner_user_id)")
     .eq("user_id", state.user.id);
   console.log("[ensureWorkspace] memberships:", mResp);
   const memberships = unwrap(mResp, "Load workspace memberships");
 
-  if (memberships && memberships.length > 0) {
-    const m = memberships.find(x => x.workspaces) || memberships[0];
-    if (m.workspaces) {
-      state.workspace = m.workspaces;
-      state.membership = { role: m.role, display_name: m.display_name };
-      console.log("[ensureWorkspace] using membership workspace", state.workspace);
-      return;
+  const joined = (memberships || []).filter(x => x.workspaces);
+  if (joined.length > 0) {
+    state.availableWorkspaces = joined.map(m => ({
+      id: m.workspaces.id,
+      name: m.workspaces.name,
+      owner_user_id: m.workspaces.owner_user_id,
+      role: m.role,
+      display_name: m.display_name,
+      joined_at: m.created_at
+    }));
+
+    // Selection order:
+    //   1. A previously-chosen workspace remembered in localStorage (if still accessible).
+    //   2. A workspace the user was INVITED to (owner_user_id !== their user id).
+    //   3. Most recently joined workspace.
+    //   4. First membership as a final fallback.
+    const stored = safeGetItem(ACTIVE_WORKSPACE_KEY);
+    let pick = stored && state.availableWorkspaces.find(w => w.id === stored);
+    if (!pick) {
+      const invited = state.availableWorkspaces.filter(w => w.owner_user_id !== state.user.id);
+      const pool = invited.length ? invited : state.availableWorkspaces;
+      pool.sort((a, b) => (b.joined_at || "").localeCompare(a.joined_at || ""));
+      pick = pool[0];
     }
-    console.warn("[ensureWorkspace] membership row had no joined workspace — falling through");
+
+    state.workspace = {
+      id: pick.id,
+      name: pick.name,
+      owner_user_id: pick.owner_user_id
+    };
+    state.membership = { role: pick.role, display_name: pick.display_name };
+    safeSetItem(ACTIVE_WORKSPACE_KEY, pick.id);
+    console.log("[ensureWorkspace] using workspace", state.workspace,
+                "of", state.availableWorkspaces.length, "accessible");
+    return;
   }
 
   // Step 2: no membership found → call the bootstrap RPC. This runs server-side
@@ -377,7 +409,66 @@ async function ensureWorkspace() {
     owner_user_id: row.owner_user_id
   };
   state.membership = { role: "admin", display_name: state.user.email };
+  state.availableWorkspaces = [{
+    id: row.id,
+    name: row.name,
+    owner_user_id: row.owner_user_id,
+    role: "admin",
+    display_name: state.user.email,
+    joined_at: new Date().toISOString()
+  }];
+  safeSetItem(ACTIVE_WORKSPACE_KEY, row.id);
   console.log("[ensureWorkspace] bootstrapped workspace", state.workspace);
+}
+
+function safeGetItem(key) {
+  try { return localStorage.getItem(key); } catch { return null; }
+}
+function safeSetItem(key, value) {
+  try { localStorage.setItem(key, value); } catch { /* ignore */ }
+}
+
+async function switchWorkspace(workspaceId) {
+  const target = state.availableWorkspaces.find(w => w.id === workspaceId);
+  if (!target || !state.workspace || target.id === state.workspace.id) return;
+  safeSetItem(ACTIVE_WORKSPACE_KEY, target.id);
+  state.workspace = {
+    id: target.id,
+    name: target.name,
+    owner_user_id: target.owner_user_id
+  };
+  state.membership = { role: target.role, display_name: target.display_name };
+
+  try {
+    await Promise.all([loadWhiteboard(), loadBacklog(), loadLogs(), loadMembers()]);
+    ui.workspaceLabel.textContent = state.workspace.name;
+    ui.workspaceNameInput.value = state.workspace.name;
+    renderToday();
+    renderWhiteboard();
+    renderBacklog();
+    renderLogs();
+    renderMembers();
+    renderWorkspaceSwitcher();
+  } catch (err) {
+    showError("Couldn't load the selected workspace.", err);
+  }
+}
+
+function renderWorkspaceSwitcher() {
+  if (!ui.workspaceSwitcher || !ui.workspaceSwitcherWrap) return;
+  const list = state.availableWorkspaces || [];
+  if (list.length <= 1) {
+    ui.workspaceSwitcherWrap.hidden = true;
+    return;
+  }
+  ui.workspaceSwitcherWrap.hidden = false;
+  ui.workspaceSwitcher.innerHTML = list.map(w => {
+    const label = (w.owner_user_id === state.user?.id)
+      ? `${w.name} (your workspace)`
+      : `${w.name}`;
+    return `<option value="${escapeHtml(w.id)}">${escapeHtml(label)}</option>`;
+  }).join("");
+  ui.workspaceSwitcher.value = state.workspace.id;
 }
 
 async function saveWorkspaceName() {
@@ -1082,6 +1173,9 @@ function wire() {
   // Settings
   ui.saveWorkspaceBtn.addEventListener("click", saveWorkspaceName);
   ui.inviteBtn.addEventListener("click", addMember);
+  if (ui.workspaceSwitcher) {
+    ui.workspaceSwitcher.addEventListener("change", (e) => switchWorkspace(e.target.value));
+  }
 
   if (ui.retryWorkspaceBtn) {
     ui.retryWorkspaceBtn.addEventListener("click", async () => {

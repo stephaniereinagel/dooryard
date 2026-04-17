@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-title" content="Homestead Ops" />
     <meta name="theme-color" content="#2f6b3a" />
     <title>Homestead Ops</title>
-    <link rel="stylesheet" href="./styles.css?v=20260416-8" />
+    <link rel="stylesheet" href="./styles.css?v=20260417-1" />
   </head>
   <body>
     <!-- ======================= AUTH GATE ======================= -->
@@ -233,6 +233,9 @@
             <details id="settings-panel">
               <summary>Settings &amp; workspace</summary>
               <div class="settings-body">
+                <label id="workspace-switcher-wrap" hidden>Switch workspace
+                  <select id="workspace-switcher"></select>
+                </label>
                 <label>Workspace name <input id="workspace-name-input" type="text" /></label>
                 <button id="save-workspace-btn" class="secondary">Save name</button>
                 <hr />
@@ -345,7 +348,7 @@
       </menu>
     </dialog>
 
-    <script src="./app-config.js?v=20260416-8"></script>
-    <script type="module" src="./app.js?v=20260416-8"></script>
+    <script src="./app-config.js?v=20260417-1"></script>
+    <script type="module" src="./app.js?v=20260417-1"></script>
   </body>
 </html>
