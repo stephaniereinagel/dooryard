@@ -9,8 +9,8 @@
   "background_color": "#f6f4ee",
   "theme_color": "#5c8469",
   "icons": [
-    { "src": "./assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "./assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "./assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" }
+    { "src": "./assets/icon-192.png?v=20260423-1", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./assets/icon-512.png?v=20260423-1", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./assets/apple-touch-icon.png?v=20260423-1", "sizes": "180x180", "type": "image/png", "purpose": "any" }
   ]
 }
