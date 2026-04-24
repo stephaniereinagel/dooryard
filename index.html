@@ -5,16 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="Homestead Ops" />
-    <meta name="theme-color" content="#2f6b3a" />
-    <title>Homestead Ops</title>
-    <link rel="stylesheet" href="./styles.css?v=20260417-1" />
+    <meta name="apple-mobile-web-app-title" content="Dooryard" />
+    <meta name="theme-color" content="#5c8469" />
+    <meta name="description" content="Dooryard &mdash; where the day's work gets done, together." />
+    <title>Dooryard &mdash; Home &amp; Crew</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png?v=20260417-2" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16.png?v=20260417-2" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png?v=20260417-2" />
+    <link rel="manifest" href="./manifest.webmanifest?v=20260417-2" />
+    <link rel="stylesheet" href="./styles.css?v=20260417-2" />
   </head>
   <body>
     <!-- ======================= AUTH GATE ======================= -->
     <section id="auth-gate" class="auth-gate" aria-live="polite">
       <article class="auth-card">
-        <h1>Homestead Ops</h1>
+        <img
+          class="auth-logo"
+          src="./assets/logo-cream.png?v=20260417-2"
+          alt="Dooryard &mdash; Home &amp; Crew"
+          width="320"
+          height="198"
+        />
+        <p class="tagline">Where the day's work gets done, together.</p>
         <p class="subtitle">Sign in to open your workspace.</p>
         <label>Email <input id="auth-email" type="email" placeholder="you@example.com" autocomplete="email" /></label>
         <label>Password <input id="auth-password" type="password" placeholder="••••••••" autocomplete="current-password" /></label>
@@ -31,7 +43,17 @@
     <div id="app" hidden>
       <header class="topbar">
         <div class="topbar-left">
-          <h1>Homestead Ops</h1>
+          <div class="brand">
+            <img
+              class="brand-mark"
+              src="./assets/logo-mark.png?v=20260417-2"
+              alt=""
+              aria-hidden="true"
+              width="32"
+              height="32"
+            />
+            <h1 class="brand-name">Dooryard</h1>
+          </div>
           <p id="workspace-label" class="subtitle">—</p>
         </div>
         <div class="topbar-right">
@@ -348,7 +370,7 @@
       </menu>
     </dialog>
 
-    <script src="./app-config.js?v=20260417-1"></script>
-    <script type="module" src="./app.js?v=20260417-1"></script>
+    <script src="./app-config.js?v=20260417-2"></script>
+    <script type="module" src="./app.js?v=20260417-2"></script>
   </body>
 </html>

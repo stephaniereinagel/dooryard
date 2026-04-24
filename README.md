@@ -1,4 +1,10 @@
-# Dooryard — Homestead Ops
+<p align="center">
+  <img src="./assets/logo-cream.png" alt="Dooryard — Home &amp; Crew" width="420" />
+</p>
+
+<p align="center"><em>Where the day's work gets done, together.</em></p>
+
+# Dooryard
 
 A mobile-first web app for directing a homestead assistant (or yourself, your spouse, or anyone else who's helping). Digitizes the "shift playbook + priority whiteboard + shift log" paper system into a shared, live workspace.
 
