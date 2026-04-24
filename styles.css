@@ -636,8 +636,8 @@ dialog form menu {
 /* ======================= RESPONSIVE ======================= */
 @media (min-width: 720px) {
   main { padding: 1.5em; }
-  .tabbar { position: sticky; top: 56px; bottom: auto; border-top: 0; border-bottom: 1px solid var(--border); }
-  #app { padding-bottom: 1em; }
+  .tabbar { border-top: 1px solid var(--border); border-bottom: 0; }
+  #app { padding-bottom: calc(var(--tab-h) + env(safe-area-inset-bottom) + 1.2em); }
 }
 
 @media (prefers-color-scheme: dark) {
