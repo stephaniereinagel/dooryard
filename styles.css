@@ -178,7 +178,7 @@ hr {
   align-items: center;
   justify-content: space-between;
   gap: 0.6em;
-  padding: 0.7em 0.9em;
+  padding: 0.55em 0.9em;
   background: var(--bg-panel);
   border-bottom: 1px solid var(--border);
   position: sticky;
@@ -187,32 +187,39 @@ hr {
   min-width: 0;
 }
 .topbar h1 { font-size: 1.05rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.topbar-left { min-width: 0; flex: 1 1 auto; }
+.topbar-left { min-width: 0; flex: 1 1 auto; display: flex; flex-direction: column; gap: 0.15em; }
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.5em;
+  gap: 0.55em;
   min-width: 0;
 }
 .brand-mark {
-  width: 28px;
-  height: 28px;
+  width: 52px;
+  height: 52px;
   flex-shrink: 0;
   display: block;
 }
 .brand-name {
   margin: 0;
-  font-size: 1.15rem;
+  font-size: 1.6rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--brand-sage);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 1;
+}
+.topbar-left .subtitle {
+  padding-left: calc(52px + 0.55em);
+  margin: 0;
+  font-size: 0.8rem;
 }
 @media (max-width: 480px) {
-  .brand-mark { width: 24px; height: 24px; }
-  .brand-name { font-size: 1.05rem; }
+  .brand-mark { width: 42px; height: 42px; }
+  .brand-name { font-size: 1.35rem; }
+  .topbar-left .subtitle { padding-left: calc(42px + 0.55em); }
 }
 .topbar-right { display: flex; align-items: center; gap: 0.4em; flex-shrink: 0; }
 .user-chip {
