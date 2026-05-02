@@ -11,66 +11,62 @@ Each task has:
 
 ---
 
-## 1. Morning chicken check
+## 1. Morning flock check
 
 **Why it matters:** Early catch of illness, predator damage, or escape = saves birds and eggs. One sick bird removed early prevents a flock-wide problem.
 
 **Steps:**
 1. Approach quietly, watch them move for ~30 seconds before entering.
-2. Count visible birds. Expected count: **[CONFIRM current count, e.g. 24]**
-3. Open coop, let them out (if not already).
-4. Look at each bird you can see: eyes clear, no limping, no missing feathers in clumps, no bloody spots, no wheezing.
-5. Check nest boxes for eggs (collect now or at end of shift — see Egg Handling).
-6. Refill feeder to **[CONFIRM: ¾ full / full / specific line]**.
-7. Refill waterer (see Waterer standard).
-8. Scan coop interior: any obvious mess, dead bird, broken nest box, signs of rodents?
+2. Open coop, let them out (if not already).
+3. Look at each bird you can see: eyes clear, no limping, no missing feathers in clumps, no bloody spots, no wheezing.
+4. Check nest boxes for eggs (collect now or at end of shift — see Egg Handling).
+5. Top off feeder.
+6. Refill waterer (see Waterer standard).
+7. Scan coop interior: any obvious mess, dead bird, broken nest box, signs of rodents?
+8. Do **not** try to force a full headcount once birds are loose in the yard. Full count happens at evening coop close.
 
 **Done looks like:**
-- All birds accounted for or anomaly noted in log
+- Birds visually checked for obvious health or safety problems
 - Food + water topped
-- Eggs collected or noted
-- Coop door status set per current predator plan **[CONFIRM]**
+- Eggs collected and noted
 
 **Common mistakes:**
 - Rushing — you catch illness by pausing and watching
 - Overfilling feed (wastes; attracts rodents)
-- Forgetting to close the pop door / leaving the run gate ajar
+- Trying to count the whole flock once they are scattered in the yard
 
 **Flag Stephanie if…**
-- Count is off by even one
 - Any bird is fluffed up, closed eyes, tail-down, or standing alone
 - Blood anywhere
 - You see signs of digging at the perimeter
 
 ---
 
-## 2. Morning duck check
+## 2. Evening coop close check
 
-**Why it matters:** Ducks are messier and drake:duck ratio can cause injuries. Their water gets foul fast; dirty water → sick ducks + bad eggs.
+**Why it matters:** Night is when the flock can be accurately counted and when predator issues inside the coop matter most. Possums have been spotted in the coop before.
 
 **Steps:**
-1. Count: expected **[CONFIRM, e.g. 16]**.
-2. Visual scan — any limping, feather loss (especially on back of hens = drake harassment), blood?
-3. Collect any eggs laid overnight (ducks often lay before dawn).
-4. Refill feed per **[CONFIRM]**.
-5. **Dump and refill water every shift** — ducks muck it within hours. Scrub weekly (Wed, see deep task).
-6. Check housing for escapes or predator damage at ground level.
+1. After birds have returned to the coop for the night, count heads.
+2. Expected count: **16 ducks, 24 chickens, and 7 baby chicks**.
+3. Scan inside the coop for predators, especially possums, and signs of disturbance.
+4. Confirm the automatic door has closed.
+5. Note the count and anything unusual in the daily log.
 
 **Done looks like:**
-- All ducks present
-- Fresh water
-- Eggs collected
-- No obvious injuries untreated
+- All expected birds are accounted for, or any missing/extra count is flagged immediately
+- Coop interior checked for predators
+- Automatic door confirmed closed
 
 **Common mistakes:**
-- Topping off water instead of dumping (keeps bacteria; ducks need it clean)
-- Missing eggs in the bedding (they bury them)
-- Ignoring a hen with back-feather damage (drake over-mating — separate issue; flag it)
+- Doing the headcount in the morning after birds are already loose
+- Assuming the automatic door closed without looking
+- Skipping the predator scan because the birds are already inside
 
 **Flag Stephanie if…**
-- Count off
-- A hen is visibly plucked on the back/neck
-- Any bird isn't eating, is wobbly, or has crusty eyes/nostrils
+- Count is off by even one
+- You see a possum or any predator/sign of predator activity
+- The automatic door did not close or looks blocked
 
 ---
 
@@ -87,8 +83,8 @@ Each task has:
    - **Home use**: dirty, cracked, oddly shaped, very small/very large
    - **Discard**: smells bad, leaking, clearly old
 5. Place sellable eggs into cartons **pointy-end down**.
-6. Write date + count on the egg log **[CONFIRM: paper log location]**.
-7. Store in **[CONFIRM: mudroom fridge shelf / separate cooler]**. Chicken and duck eggs in **separate** labeled cartons.
+6. Log count in the egg log.
+7. Store on the white cabinet in the kitchen. Chicken and duck eggs in **separate** labeled cartons.
 
 **Done looks like:**
 - Clean cartons sorted + dated
@@ -115,11 +111,11 @@ Each task has:
 2. Rinse with clean water, agitate once.
 3. Refill.
 
-**Steps (weekly deep clean — Wednesdays for ducks, Fridays for chickens if time):**
+**Steps (weekly deep clean):**
 1. Full dump.
-2. Scrub with stiff brush + mild soap (**[CONFIRM: brand — e.g. unscented Dawn]**).
+2. Scrub with stiff brush + mild soap if needed.
 3. Rinse thoroughly (no soap residue).
-4. Optional sanitize: **[CONFIRM if you want this — small splash of white vinegar rinse, or dilute bleach per CDC]**.
+4. Optional sanitize:(small splash of white vinegar rinse).
 5. Refill with fresh water.
 
 **Done looks like:**
@@ -184,22 +180,19 @@ Each task has:
 
 ---
 
-## 7. Farm stand setup + opening (Friday)
+## 7. Farm stand setup + opening (Friday 8:30am)
 
 **Why it matters:** The stand is self-serve once opened — the setup *is* the whole customer experience. A well-set stand outsells a sloppy one 3:1. You won't be there to answer questions, so the stand has to answer them for you.
 
 **Steps:**
-1. Haul tote + tables + shade to stand. Setup order: table → cover → shade → products → signage → payment.
-2. **Tables:** flat, level, covered with clean cloth.
-3. **Products by sightline** — highest-margin/visual-pop items (baked goods, flowers) at eye level and front.
-4. **Eggs:** in shade or cooler. Chicken and duck eggs labeled **separately**.
-5. **Pricing:** clearly visible on every category. Because it's self-serve, no item can be unpriced.
-6. **Payment:** cash box with change for $20, QR/Venmo code visible and tested, pen for check backup. Clear instructions: "self-serve — pay here" with arrows to the payment method.
-7. **"How it works" mini-sign:** one small sign that tells the first-time customer the whole flow ("Take what you want → pay in the box or scan the QR → thanks!"). This is critical for self-serve.
-8. **Road signage:** road-facing signs upright and readable from a moving car. Flag/banner up if that's the current setup.
-9. **Open for business:** flip the "OPEN" sign.
-10. **Facebook post:** photo of today's lineup + price list + any specials. Template: **[CONFIRM: link or script]**. Post to Stephanie's page and tag any local groups per her list.
-11. **Final visibility check:** walk or drive past the road frontage. From a passing car at 40 mph, can you tell (a) that the stand is open, (b) roughly what's for sale? If no, fix signage before leaving.
+    1.    Open doors, prop open with flower pots from the top shelf.
+    2.    Move eggs from cooler into “last week’s lay” crate on the bottom shelf. 
+    3.    Stock cooler with fresh eggs (on white cabinet in kitchen) chicken left, duck right
+    4.    Put pastry box on top shelf, left side
+    5.    Put non-food items on the right side of the top shelf. 
+    6.    Fill pastry box with baked goods found on the white cabinet in the kitchen
+    7.    Put out signs
+    8.    Picture and post to social media. 
 
 **Done looks like:**
 - A first-time customer can arrive, choose, pay, and leave without anyone present and without confusion.
@@ -227,11 +220,13 @@ Each task has:
 
 **Steps:**
 1. Count cash, subtract starting float, record take in **[CONFIRM: log / spreadsheet]**.
-2. Unsold items: eggs → back to fridge; baked goods → labeled by date in **[CONFIRM]** (sell Sat or family/staff eat); flowers → refresh water, next-day sale or compost.
-3. Pack tote back the same way it came out.
-4. Break down tables, shade, signage. Store in **[CONFIRM]**.
-5. Sweep stand area. Nothing attracting pests.
-6. Note: weather, what sold first, what didn't move, any customer comments or requests (from any notes left in the cash box).
+2.    Donate “last weeks lay”
+3.    Move pastry box to white cabinet in kitchen
+4.    Put non-food items in/on top of pastry box
+5.    Wipe down shelves and containers
+6.    Put flower pots in top shelf 
+7.    Close doors and use bar to secure
+8.    Store signs until next week
 
 **Done looks like:**
 - Stand area empty and clean

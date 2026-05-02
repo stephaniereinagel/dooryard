@@ -89,7 +89,7 @@
           </article>
 
           <article class="panel">
-            <h3>Arrival (8:00–8:15)</h3>
+            <h3>Daily arrival / opening check</h3>
             <ul class="checklist" data-section="arrival">
               <li><label><input type="checkbox" /> Park in designated spot</label></li>
               <li><label><input type="checkbox" /> Read priority whiteboard above</label></li>
@@ -99,10 +99,10 @@
           </article>
 
           <article class="panel">
-            <h3>Daily core (8:15–9:30)</h3>
+            <h3>Daily core chores</h3>
             <ul class="checklist" data-section="core">
-              <li><label><input type="checkbox" /> Chickens: visual, feed, water, eggs</label></li>
-              <li><label><input type="checkbox" /> Ducks: visual, feed, <strong>water dumped &amp; refilled</strong>, eggs</label></li>
+              <li><label><input type="checkbox" /> Chickens: visual health check, feed, water, eggs</label></li>
+              <li><label><input type="checkbox" /> Ducks: visual health check, feed, <strong>water dumped &amp; refilled</strong>, eggs</label></li>
               <li><label><input type="checkbox" /> Eggs sorted + logged (see count below)</label></li>
               <li><label><input type="checkbox" /> Garden walk-through (observation only)</label></li>
             </ul>
@@ -110,6 +110,17 @@
               <label>Chicken eggs <input id="egg-chicken" type="number" min="0" step="1" /></label>
               <label>Duck eggs <input id="egg-duck" type="number" min="0" step="1" /></label>
             </div>
+          </article>
+
+          <article class="panel">
+            <h3>Evening coop close check</h3>
+            <p class="small">Do the headcount at night after the flock has returned to the coop.</p>
+            <ul class="checklist" data-section="evening-coop">
+              <li><label><input type="checkbox" /> Count heads: expect 16 ducks, 24 chickens, 7 baby chicks</label></li>
+              <li><label><input type="checkbox" /> Scan inside coop for predators, especially possums</label></li>
+              <li><label><input type="checkbox" /> Confirm automatic door closed</label></li>
+              <li><label><input type="checkbox" /> Note count and anything unusual in animal notes</label></li>
+            </ul>
           </article>
 
           <article class="panel" id="day-specific-panel">
@@ -133,8 +144,8 @@
           </article>
 
           <article class="panel">
-            <h3>Wrap-up log (11:50–12:00)</h3>
-            <p class="small">Filled at end of shift. Stephanie reads this to know what happened.</p>
+            <h3>Daily wrap-up log</h3>
+            <p class="small">Fill this after daily care is covered so everyone can see what happened today.</p>
             <label>Hours worked
               <span class="two-col">
                 <input id="log-hours-start" type="time" />
@@ -156,7 +167,7 @@
               <label>Rough stand inventory at 12:00 <textarea id="log-stand-inventory" rows="2"></textarea></label>
             </div>
 
-            <label>Questions for Friday wrap-up <textarea id="log-questions" rows="2"></textarea></label>
+            <label>Questions / follow-up for next check-in <textarea id="log-questions" rows="2"></textarea></label>
             <label>What I'd like to do next shift <textarea id="log-next" rows="2"></textarea></label>
 
             <div class="row actions">
@@ -371,6 +382,6 @@
     </dialog>
 
     <script src="./app-config.js?v=20260423-1"></script>
-    <script type="module" src="./app.js?v=20260423-1"></script>
+    <script type="module" src="./app.js?v=20260502-1"></script>
   </body>
 </html>

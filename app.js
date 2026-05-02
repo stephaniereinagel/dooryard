@@ -838,7 +838,7 @@ function renderToday() {
   ui.todayTitle.textContent = day === "Mon" ? "Monday — Garden focus"
     : day === "Wed" ? "Wednesday — Animals + stand prep"
     : day === "Fri" ? "Friday — Farm stand day"
-    : `${day} — off-day`;
+    : `${day} — Daily coverage`;
   ui.todaySubtitle.textContent = dateText;
 
   const dayBody = ui.daySpecificBody;
@@ -881,9 +881,10 @@ function renderToday() {
       </ol>
     `;
   } else {
-    ui.daySpecificTitle.textContent = "Off-day / flex";
+    ui.daySpecificTitle.textContent = "Daily coverage";
     dayBody.innerHTML = `
-      <p>Not a scheduled shift day. Use this as a flex/project day if needed.</p>
+      <p>Complete the arrival loop, daily core chores, egg counts, evening coop close check, and wrap-up log so the household has a record for today.</p>
+      <p>After daily care is covered, use the priority whiteboard or backlog to choose any extra work.</p>
     `;
   }
 }
